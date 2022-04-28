@@ -5,6 +5,9 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.conf import settings
 from django.core.mail import send_mail
+from datetime import datetime,timedelta,date
+from django.db.models import Q
+from django.db.models import Sum
 
 # Create your views here.
 def home_view(request):
@@ -215,6 +218,7 @@ def reject_doctor_view(request,pk):
 @user_passes_test(is_admin)
 def admin_view_doctor_specialisation_view(request):
     doctors=models.Doctor.objects.all().filter(status=True)
+    print(doctors)
     return render(request,'hospital/admin_view_doctor_specialisation.html',{'doctors':doctors})
 
 
