@@ -131,10 +131,10 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'static')
 
 LOGIN_REDIRECT_URL='/afterlogin'
 
-EMAIL_RECEIVING_USER = ['aalind.sharma@innovaccer.com']
+EMAIL_RECEIVING_USER = ['ya86442sh@gmail.com']
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'aalind.sharma@innovaccer.com'
+EMAIL_HOST = 'rahul.srivastava@innovaccer.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'aalind.sharma@innovaccer.com' # this email will be used to send emails
+EMAIL_HOST_USER = 'ya86442sh@gmail.com' # this email will be used to send emails
 EMAIL_HOST_PASSWORD = '12345678'
