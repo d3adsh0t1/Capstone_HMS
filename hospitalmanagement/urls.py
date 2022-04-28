@@ -10,8 +10,8 @@ urlpatterns = [
     path('',views.home_view,name=''),
 
 
-    # path('aboutus', views.aboutus_view),
-    # path('contactus', views.contactus_view),
+    path('aboutus', views.aboutus_view),
+    path('contactus', views.contactus_view),
 
 
     path('adminclick', views.adminclick_view),
