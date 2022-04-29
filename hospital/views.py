@@ -28,6 +28,12 @@ def doctorclick_view(request):
         return HttpResponseRedirect('afterlogin')
     return render(request,'hospital/doctorclick.html')
 
+#for showing signup/login button for patient
+def patientclick_view(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('afterlogin')
+    return render(request,'hospital/patientclick.html')
+
 def admin_signup_view(request):
     form=forms.AdminSigupForm()
     if request.method=='POST':
