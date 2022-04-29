@@ -40,7 +40,6 @@ urlpatterns = [
     path('admin-approve-doctor', views.admin_approve_doctor_view,name='admin-approve-doctor'),
     path('approve-doctor/<int:pk>', views.approve_doctor_view,name='approve-doctor'),
     path('reject-doctor/<int:pk>', views.reject_doctor_view,name='reject-doctor'),
-    path('admin-view-doctor-specialisation',views.admin_view_doctor_specialisation_view,name='admin-view-doctor-specialisation'),
 
     path('admin-patient', views.admin_patient_view,name='admin-patient'),
     path('admin-view-patient', views.admin_view_patient_view,name='admin-view-patient'),
@@ -60,13 +59,20 @@ urlpatterns = [
 urlpatterns +=[
     path('doctor-dashboard', views.doctor_dashboard_view,name='doctor-dashboard'),
     path('search', views.search_view,name='search'),
-
     path('doctor-patient', views.doctor_patient_view,name='doctor-patient'),
     path('doctor-view-patient', views.doctor_view_patient_view,name='doctor-view-patient'),
     path('doctor-view-discharge-patient',views.doctor_view_discharge_patient_view,name='doctor-view-discharge-patient'),
 
-    path('doctor-appointment', views.doctor_appointment_view,name='doctor-appointment'),
-    path('doctor-view-appointment', views.doctor_view_appointment_view,name='doctor-view-appointment'),
-    path('doctor-delete-appointment',views.doctor_delete_appointment_view,name='doctor-delete-appointment'),
-    path('delete-appointment/<int:pk>', views.delete_appointment_view,name='delete-appointment'),
+]
+
+
+
+#---------FOR PATIENT RELATED URLS-------------------------------------
+urlpatterns +=[
+
+    path('patient-dashboard', views.patient_dashboard_view,name='patient-dashboard'),
+    path('patient-view-doctor', views.patient_view_doctor_view,name='patient-view-doctor'),
+    path('searchdoctor', views.search_doctor_view,name='searchdoctor'),
+    path('patient-discharge', views.patient_discharge_view,name='patient-discharge'),
+
 ]

@@ -86,12 +86,14 @@ def patient_signup_view(request):
         return HttpResponseRedirect('patientlogin')
     return render(request,'hospital/patientsignup.html',context=mydict)
 
+
 def is_admin(user):
     return user.groups.filter(name='ADMIN').exists()
 def is_doctor(user):
     return user.groups.filter(name='DOCTOR').exists()
 def is_patient(user):
     return user.groups.filter(name='PATIENT').exists()
+
 
 def afterlogin_view(request):
     if is_admin(request.user):
@@ -102,7 +104,12 @@ def afterlogin_view(request):
             return redirect('doctor-dashboard')
         else:
             return render(request,'hospital/doctor_wait_for_approval.html')
-
+    elif is_patient(request.user):
+        accountapproval=models.Patient.objects.all().filter(user_id=request.user.id,status=True)
+        if accountapproval:
+            return redirect('patient-dashboard')
+        else:
+            return render(request,'hospital/patient_wait_for_approval.html')
 
 
 
@@ -241,14 +248,6 @@ def reject_doctor_view(request,pk):
     return redirect('admin-approve-doctor')
 
 
-
-@login_required(login_url='adminlogin')
-@user_passes_test(is_admin)
-def admin_view_doctor_specialisation_view(request):
-    doctors=models.Doctor.objects.all().filter(status=True)
-    print(doctors)
-    return render(request,'hospital/admin_view_doctor_specialisation.html',{'doctors':doctors})
-
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
 def admin_patient_view(request):
@@ -327,6 +326,7 @@ def admin_add_patient_view(request):
 
         return HttpResponseRedirect('admin-view-patient')
     return render(request,'hospital/admin_add_patient.html',context=mydict)
+
 
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
@@ -454,6 +454,7 @@ def download_pdf_view(request,pk):
     }
     return render_to_pdf('hospital/download_bill.html',dict)
 
+
 #------------------------ DOCTOR RELATED VIEWS START ------------------------------
 
 @login_required(login_url='doctorlogin')
@@ -522,60 +523,95 @@ def doctor_view_discharge_patient_view(request):
 
 
 
-@login_required(login_url='doctorlogin')
-@user_passes_test(is_doctor)
-def doctor_appointment_view(request):
-    doctor=models.Doctor.objects.get(user_id=request.user.id) #for profile picture of doctor in sidebar
-    return render(request,'hospital/doctor_appointment.html',{'doctor':doctor})
-
-
-
-@login_required(login_url='doctorlogin')
-@user_passes_test(is_doctor)
-def doctor_view_appointment_view(request):
-    doctor=models.Doctor.objects.get(user_id=request.user.id) #for profile picture of doctor in sidebar
-    appointments=models.Appointment.objects.all().filter(status=True,doctorId=request.user.id)
-    patientid=[]
-    for a in appointments:
-        patientid.append(a.patientId)
-    patients=models.Patient.objects.all().filter(status=True,user_id__in=patientid)
-    appointments=zip(appointments,patients)
-    return render(request,'hospital/doctor_view_appointment.html',{'appointments':appointments,'doctor':doctor})
-
-
-
-@login_required(login_url='doctorlogin')
-@user_passes_test(is_doctor)
-def doctor_delete_appointment_view(request):
-    doctor=models.Doctor.objects.get(user_id=request.user.id) #for profile picture of doctor in sidebar
-    appointments=models.Appointment.objects.all().filter(status=True,doctorId=request.user.id)
-    patientid=[]
-    for a in appointments:
-        patientid.append(a.patientId)
-    patients=models.Patient.objects.all().filter(status=True,user_id__in=patientid)
-    appointments=zip(appointments,patients)
-    return render(request,'hospital/doctor_delete_appointment.html',{'appointments':appointments,'doctor':doctor})
-
-
-
-@login_required(login_url='doctorlogin')
-@user_passes_test(is_doctor)
-def delete_appointment_view(request,pk):
-    appointment=models.Appointment.objects.get(id=pk)
-    appointment.delete()
-    doctor=models.Doctor.objects.get(user_id=request.user.id) #for profile picture of doctor in sidebar
-    appointments=models.Appointment.objects.all().filter(status=True,doctorId=request.user.id)
-    patientid=[]
-    for a in appointments:
-        patientid.append(a.patientId)
-    patients=models.Patient.objects.all().filter(status=True,user_id__in=patientid)
-    appointments=zip(appointments,patients)
-    return render(request,'hospital/doctor_delete_appointment.html',{'appointments':appointments,'doctor':doctor})
+#---------------------------------------------------------------------------------
+#------------------------ DOCTOR RELATED VIEWS END ------------------------------
+#---------------------------------------------------------------------------------
 
 
 
 #---------------------------------------------------------------------------------
-#------------------------ DOCTOR RELATED VIEWS END ------------------------------
+#------------------------ PATIENT RELATED VIEWS START ------------------------------
+#---------------------------------------------------------------------------------
+@login_required(login_url='patientlogin')
+@user_passes_test(is_patient)
+def patient_dashboard_view(request):
+    patient=models.Patient.objects.get(user_id=request.user.id)
+    doctor=models.Doctor.objects.get(user_id=patient.assignedDoctorId)
+    mydict={
+    'patient':patient,
+    'doctorName':doctor.get_name,
+    'doctorMobile':doctor.mobile,
+    'doctorAddress':doctor.address,
+    'symptoms':patient.symptoms,
+    'doctorDepartment':doctor.department,
+    'admitDate':patient.admitDate,
+    }
+    return render(request,'hospital/patient_dashboard.html',context=mydict)
+
+
+
+
+
+
+
+
+
+def patient_view_doctor_view(request):
+    doctors=models.Doctor.objects.all().filter(status=True)
+    patient=models.Patient.objects.get(user_id=request.user.id) #for profile picture of patient in sidebar
+    return render(request,'hospital/patient_view_doctor.html',{'patient':patient,'doctors':doctors})
+
+
+
+def search_doctor_view(request):
+    patient=models.Patient.objects.get(user_id=request.user.id) #for profile picture of patient in sidebar
+    
+    # whatever user write in search box we get in query
+    query = request.GET['query']
+    doctors=models.Doctor.objects.all().filter(status=True).filter(Q(department__icontains=query)| Q(user__first_name__icontains=query))
+    return render(request,'hospital/patient_view_doctor.html',{'patient':patient,'doctors':doctors})
+
+
+
+
+
+
+@login_required(login_url='patientlogin')
+@user_passes_test(is_patient)
+def patient_discharge_view(request):
+    patient=models.Patient.objects.get(user_id=request.user.id) #for profile picture of patient in sidebar
+    dischargeDetails=models.PatientDischargeDetails.objects.all().filter(patientId=patient.id).order_by('-id')[:1]
+    patientDict=None
+    if dischargeDetails:
+        patientDict ={
+        'is_discharged':True,
+        'patient':patient,
+        'patientId':patient.id,
+        'patientName':patient.get_name,
+        'assignedDoctorName':dischargeDetails[0].assignedDoctorName,
+        'address':patient.address,
+        'mobile':patient.mobile,
+        'symptoms':patient.symptoms,
+        'admitDate':patient.admitDate,
+        'releaseDate':dischargeDetails[0].releaseDate,
+        'daySpent':dischargeDetails[0].daySpent,
+        'medicineCost':dischargeDetails[0].medicineCost,
+        'roomCharge':dischargeDetails[0].roomCharge,
+        'doctorFee':dischargeDetails[0].doctorFee,
+        'OtherCharge':dischargeDetails[0].OtherCharge,
+        'total':dischargeDetails[0].total,
+        }
+        print(patientDict)
+    else:
+        patientDict={
+            'is_discharged':False,
+            'patient':patient,
+            'patientId':request.user.id,
+        }
+    return render(request,'hospital/patient_discharge.html',context=patientDict)
+
+
+#------------------------ PATIENT RELATED VIEWS END ------------------------------
 #---------------------------------------------------------------------------------
 
 
