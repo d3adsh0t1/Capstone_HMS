@@ -721,6 +721,11 @@ def patient_discharge_view(request):
         }
     return render(request,'hospital/patient_discharge.html',context=patientDict)
 
+@login_required(login_url='patientlogin')
+@user_passes_test(is_patient)
+def patient_appointment_view(request):
+    patient=models.Patient.objects.get(user_id=request.user.id) #for profile picture of patient in sidebar
+    return render(request,'hospital/patient_appointment.html',{'patient':patient})
 
 #------------------------ PATIENT RELATED VIEWS END ------------------------------
 #---------------------------------------------------------------------------------
