@@ -488,6 +488,33 @@ def admin_add_appointment_view(request):
         return HttpResponseRedirect('admin-view-appointment')
     return render(request,'hospital/admin_add_appointment.html',context=mydict)
 
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_admin)
+def admin_approve_appointment_view(request):
+    #those whose approval are needed
+    appointments=models.Appointment.objects.all().filter(status=False)
+    return render(request,'hospital/admin_approve_appointment.html',{'appointments':appointments})
+
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_admin)
+def approve_appointment_view(request,pk):
+    appointment=models.Appointment.objects.get(id=pk)
+    appointment.status=True
+    appointment.save()
+    return redirect(reverse('admin-approve-appointment'))
+
+
+
+@login_required(login_url='adminlogin')
+@user_passes_test(is_admin)
+def reject_appointment_view(request,pk):
+    appointment=models.Appointment.objects.get(id=pk)
+    appointment.delete()
+    return redirect('admin-approve-appointment')
+
 #------------------------ DOCTOR RELATED VIEWS START ------------------------------
 
 @login_required(login_url='doctorlogin')
