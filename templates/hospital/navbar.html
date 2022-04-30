@@ -11,16 +11,82 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <style type="text/css">
-    .bs-example {
+    /* .bs-example {
       margin: 0px;
 
-    }
+    } */
 
-    .navbar-brand {
-      font-size: 20px;
-      font-family: sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
 
-    }
+body {
+    background-color: rgb(1, 14, 32)
+    
+}
+.navbar {
+    min-height: 7px;
+    
+}
+
+.navbar-nav>li>a {
+    text-transform: uppercase;
+    font-size: 15px;
+     margin-right: 20px;
+    color: #fff
+}
+.navbar-nav>li>a>.nav-link:hover {
+  
+    color: black;
+}
+
+.navbar-toggler {
+    padding: .20rem .50rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid white
+}
+
+.nav-link {
+    color: rgb(240, 240, 250) !important
+    
+}
+
+.wrapper {
+    width: 40%;
+    position: absolute;
+    height: 70%;
+    background-color: #000;
+     clip-path: polygon(100% 0%, 100% 50%, 100% 100%, 0% 100%, 0% 50%, 0% 0%)
+    transition: 1s all
+}
+
+.navbar-brand {
+    color: #fff;
+    font-family: 'Allerta Stencil', sans-serif;
+
+    font-size: 27px
+}
+
+.navbar-red:hover .wrapper {
+    clip-path: polygon(20% 0, 100% 0, 50% 50%, 50% 55%, 55% 100%)
+}
+
+.navbar-brand:hover {
+    color: rgb(240, 113, 9)
+}
+
+.navbar-red {
+    background-color: red;
+    color: #fff
+}
+
+#items {
+  font-size: 30px;
+}
+
+.all-show {
+    z-index: 5
+}
   </style>
 </head>
 
@@ -28,30 +94,32 @@
 
 
 
-  <div class="bs-example">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background:#337AB7;">
-      <a href="/" class="navbar-brand">Hospital Management</a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+ 
+    <nav class="navbar navbar-expand-sm py-1 navbar-red navbar-dark  fixed-top" >
+      <div class="wrapper"> </div>
 
-      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+     <div class="container-fluid all-show"> <a href="/" class="navbar-brand">Hospital Management <i class="fa fa-codepen"></i></a></div>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> 
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav">
-
-          <a href="/adminclick" class="nav-item nav-link">Admin</a>
-          <a href="/doctorclick" class="nav-item nav-link">Doctor</a>
-          <a href="/patientclick" class="nav-item nav-link">Patient</a>
+        
+         <li class="nav-item" id="items"> <a href="/adminclick" class=" nav-link">Admin</a></li>
+         <li class="nav-item"> <a href="/doctorclick" class="nav-link">Doctor</a></li>
+          <li class="nav-item"><a href="/patientclick" class=" nav-link">Patient</a></li>
+        
 
         </div>
 
         <div class="navbar-nav">
-          <a href="/aboutus" class="nav-item nav-link">About Us</a>
+          <a href="/aboutus" class="nav-item nav-link"><span>About Us</span></a>
           <a href="/contactus" class="nav-item nav-link">Contact Us</a>
         </div>
 
       </div>
     </nav>
-  </div>
+  
 
 </body>
 
