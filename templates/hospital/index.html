@@ -9,14 +9,44 @@
     .jumbotron {
       margin-top: 0px;
       margin-bottom: 0px;
-      background-image: url('{% static "images/bg2.webp" %}');
+      background-image: url('../../static/images/Home.jpg');
       background-size: cover;
       background-repeat: no-repeat;
     }
 
-    .jumbotron h5,
-    h3 {
+    .Covid{
+      text-align: right;
+      font-size: 30px;
+      color: red;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+    .lead{
+      text-align: left;
+    }
+    
+    .register{
+      text-align: right;
+      
+    }
+
+    .jumbotron h5 {
       text-align: center;
+      font-size: 60px;
+      color: pink;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    .em{
+      text-align: left;
+      font-size: 30px;
+      color: red;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
     }
 
 
@@ -24,16 +54,6 @@
       margin: 0px;
     }
 
-
-
-    .glow {
-      font-size: 50px;
-      color: white;
-      text-align: center;
-      -webkit-animation: glow 1s ease-in-out infinite alternate;
-      -moz-animation: glow 1s ease-in-out infinite alternate;
-      animation: glow 1s ease-in-out infinite alternate;
-    }
 
     @-webkit-keyframes glow {
       from {
@@ -51,18 +71,26 @@
 
 <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
   <br>
-  <h5 class="display-3 glow">We are always there for you</h5>
+  <h5 class="display-3 glow">We are always there for you!</h5>
   <br><br><br><br><br>
   <p>
-  <h3>Emergency ?</h3>
+  <h3 class="em">Emergency ?</h3>
 
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="/patientclick" role="button">Book Appointment</a>
   </p>
   <br><br>
-</div>
 
-<br><br><br><br>
+  <br>
+  <br><br><br><br><br>
+  <p>
+  <h3 class="Covid">COVID-19?</h3>
+
+  <p class="register">
+    <a class="btn btn-primary btn-lg" href="https://www.cowin.gov.in/" role="button">Register Here</a>
+  </p>
+  <br><br>
+</div>
 
 <br><br><br>
 
