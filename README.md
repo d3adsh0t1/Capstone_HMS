@@ -83,7 +83,7 @@ http://127.0.0.1:8000/
 ## Screenshots
 
 ### Homepage
-![homepage snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/master/static/screenshots/Screenshot%20(499).png?raw=true)
+![homepage snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/f6bba0e462f5d616988473a5e76fdd24e35c2a31/static/screenshots/Admin%20Dashboard.png)
 ### Admin Dashboard
 ![dashboard snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/master/static/screenshots/Screenshot%20(500).png?raw=true)
 ### Invoice
