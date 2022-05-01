@@ -1,6 +1,24 @@
+<style>
+  .bdy{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfGQHWRKMghob3nS_E77WP8mxv6GvZVk21Roue_PwZ4vn7OpCwtDiood9RtHz1LWDyeY&usqp=CAU');
+    background-size: cover;
+      background-repeat: no-repeat;
+      
+  }
+  .jumbotron{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfGQHWRKMghob3nS_E77WP8mxv6GvZVk21Roue_PwZ4vn7OpCwtDiood9RtHz1LWDyeY&usqp=CAU');
+    background-size: cover;
+      background-repeat: no-repeat;
+      color: white;
+      font-size: xx-large;
+
+  }
+</style>
+<div class="bdy">
 {% extends 'hospital/homebase.html' %}
 
 {% block content %}
+
 
 <br>
 <br>
@@ -8,12 +26,14 @@
 <div class="jumbotron" style="margin-bottom:0px;">
   <h1 class="display-4" style="text-align:center;">Hello, Patient</h1>
   <p class="lead">Welcome to Hospital Management System.</p>
-  <hr class="my-4">
+  <hr class="my-4"><br><br><br>
   <p>You can access various features after Login/SignUp.</p>
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="/patientsignup" role="button">Register Your Account</a>
     <a class="btn btn-primary btn-lg" href="/patientlogin" role="button">Login</a>
   </p>
 </div>
+<br><br><br><br><br>
 
 {% endblock content %}
+<div></div>

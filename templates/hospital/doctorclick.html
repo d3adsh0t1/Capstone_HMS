@@ -1,17 +1,19 @@
-{% extends 'hospital/homebase.html' %}
-{% block content %}
-
-<br>
-<br>
-
 <style>
+  
 
-.jumbotron{
+  .jumbotron{
   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLSjcGvq7o7olEU1U6D4iWw4yOhjFvpOV-79ST5Ze2UdjVX_en4EtnNNTCFCoIeE-yaMY&usqp=CAU');
     background-size: 100%;
   
     
     }
+    .dck{
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLSjcGvq7o7olEU1U6D4iWw4yOhjFvpOV-79ST5Ze2UdjVX_en4EtnNNTCFCoIeE-yaMY&usqp=CAU');
+    background-size: 100%;
+  
+    
+    }
+    
     p{
       font-size: x-large;
     }
@@ -26,6 +28,15 @@
     }
 
 </style>
+
+<div class="dck">
+{% extends 'hospital/homebase.html' %}
+{% block content %}
+
+<br>
+<br>
+
+
 
 <div class="jumbotron " style="margin-bottom:0px;"><br>
   <h1 class="display-4" style="text-align:center ;">Hello, Doctor</h1>
@@ -42,3 +53,4 @@
 <br><br><br><br><br><br><br>
 
 {% endblock content %}
+</div>
