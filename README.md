@@ -83,14 +83,18 @@ http://127.0.0.1:8000/
 ## Screenshots
 
 ### Homepage
-![homepage snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/f6bba0e462f5d616988473a5e76fdd24e35c2a31/static/screenshots/Admin%20Dashboard.png)
+![homepage snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/0ac90e1353cafaa4ea3ad5b0c73241521416ade3/static/screenshots/Homepage.png)
+### Admin Login/Signup
+![homepage snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/0ac90e1353cafaa4ea3ad5b0c73241521416ade3/static/screenshots/Admin%20Login.png)
 ### Admin Dashboard
-![dashboard snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/master/static/screenshots/Screenshot%20(500).png?raw=true)
+![dashboard snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/0ac90e1353cafaa4ea3ad5b0c73241521416ade3/static/screenshots/Admin%20Dashboard.png)
+### Admin Approval Page
+![homepage snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/0ac90e1353cafaa4ea3ad5b0c73241521416ade3/static/screenshots/admin%20approving%20patient.png)
 ### Invoice
-![invoice snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/master/static/screenshots/Screenshot%20(501).png?raw=true)
-### Patient Dashboard
-![p_dashboard snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/master/static/screenshots/Screenshot%20(503).png?raw=true)
+![invoice snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/0ac90e1353cafaa4ea3ad5b0c73241521416ade3/static/screenshots/Invoice%20admin.png)
 ### Doctor Dashboard
-![d_dashboard snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/master/static/screenshots/Screenshot%20(504).png?raw=true)
+![d_dashboard snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/0ac90e1353cafaa4ea3ad5b0c73241521416ade3/static/screenshots/Doctor%20Dashboard.png)
+### Patient Dashboard
+![p_dashboard snap](https://github.com/d3adsh0t1/Capstone_HMS/blob/0ac90e1353cafaa4ea3ad5b0c73241521416ade3/static/screenshots/Patient%20Dashboard.png)
 ### Book Appointment
-![appointmentsnap](https://github.com/d3adsh0t1/Capstone_HMS/blob/master/static/screenshots/Screenshot%20(505).png?raw=true)
+![appointmentsnap](https://github.com/d3adsh0t1/Capstone_HMS/blob/0ac90e1353cafaa4ea3ad5b0c73241521416ade3/static/screenshots/Patient%20Book%20appointment.png)
