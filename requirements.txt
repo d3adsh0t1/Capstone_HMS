@@ -16,7 +16,6 @@ olefile==0.46
 paramiko==2.6.0
 psycopg2==2.9.3
 psycopg2-binary==2.9.3
-reportlab==3.5.34
 requests==2.22.0
 SQLAlchemy==1.4.35
 sqlparse==0.4.2
