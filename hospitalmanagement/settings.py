@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,9 +25,9 @@ STATIC_DIR=os.path.join(BASE_DIR,'static')
 SECRET_KEY = 'hpbv()ep00boce&o0w7z1h)st148(*m@6@-rk$nn)(n9ojj4c0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://innovaccer-hms.herokuapp.com/',
+ALLOWED_HOSTS = [
 'localhost',
 '127.0.0.1']
 
@@ -134,6 +133,3 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'static')
 
 LOGIN_REDIRECT_URL='/afterlogin'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# Activate Django-Heroku.
-django_heroku.settings(locals())
