@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from hospital import views
 from django.contrib.auth.views import LoginView,LogoutView
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 #-------------FOR ADMIN RELATED URLS
 urlpatterns = [
@@ -59,7 +60,7 @@ urlpatterns = [
     path('admin-approve-appointment', views.admin_approve_appointment_view,name='admin-approve-appointment'),
     path('approve-appointment/<int:pk>', views.approve_appointment_view,name='approve-appointment'),
     path('reject-appointment/<int:pk>', views.reject_appointment_view,name='reject-appointment'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 #---------FOR DOCTOR RELATED URLS-------------------------------------
 urlpatterns +=[
